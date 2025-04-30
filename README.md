@@ -3,6 +3,6 @@ OpenGL project
 
 ## İmages
 
-[images/project.jpg]
-[images/project1.jpg]
-[images/project2.jpg]
+![Proje Görseli1](images/project.jpg)
+![Proje Görseli2](images/project1.jpg)
+![Proje Görseli3](images/project2.jpg)
