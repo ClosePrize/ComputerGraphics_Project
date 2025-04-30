@@ -1,2 +1,2 @@
 # ComputerGraphics_Project
-OpenGL
+OpenGL project
