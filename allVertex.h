@@ -22,10 +22,10 @@ Vertex carpetVertices[] = {
 	Vertex{glm::vec3(1.0f, 0.01f,  1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 0.0f)}, // Sað Ön Üst (1)
 	Vertex{glm::vec3(1.0f, 0.01f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 1.0f)}, // Sað Ön Alt (2)
 	Vertex{glm::vec3(-1.0f, 0.01f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(0.0f, 1.0f)}, // Sol Ön Alt (3)
-	Vertex{glm::vec3(-1.0f, -0.1f,  1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(0.0f, 0.0f)}, // Sol Ön Alt (4) ->  Alt Yüz, Sol Ön Alt
-	Vertex{glm::vec3(1.0f, -0.1f,  1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 0.0f)}, // Sað Ön Alt (5) -> Alt Yüz, Sað Ön Alt
-	Vertex{glm::vec3(1.0f, -0.1f, -1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 1.0f)}, // Sað Arka Alt (6)  -> Alt Yüz, Sað Arka Alt
-	Vertex{glm::vec3(-1.0f, -0.1f, -1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(0.0f, 1.0f)}, // Sol Arka Alt (7) -> Alt Yüz, Sol Arka Alt
+	Vertex{glm::vec3(-1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(0.0f, 0.0f)}, // Sol Ön Alt (4) ->  Alt Yüz, Sol Ön Alt
+	Vertex{glm::vec3(1.0f, 0.0f,  1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 0.0f)}, // Sað Ön Alt (5) -> Alt Yüz, Sað Ön Alt
+	Vertex{glm::vec3(1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(1.0f, 1.0f)}, // Sað Arka Alt (6)  -> Alt Yüz, Sað Arka Alt
+	Vertex{glm::vec3(-1.0f, 0.0f, -1.0f), glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec2(0.0f, 1.0f)}, // Sol Arka Alt (7) -> Alt Yüz, Sol Arka Alt
 };
 
 Vertex backWallVertices[] =
@@ -72,6 +72,28 @@ Vertex rightWallVertices[] = {
 	Vertex{glm::vec3(1.9f,   2.0f,  2.0f), glm::vec3(0.7f), glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(1.0f, 1.0f)}, // 6: sað üst ön
 	Vertex{glm::vec3(1.9f,   2.0f, -2.0f), glm::vec3(0.7f), glm::vec3(-1.0f, 0.0f, 0.0f), glm::vec2(0.0f, 1.0f)}  // 7: sað üst arka
 };
+
+Vertex frameVertices[] = {
+	// Alt yüzey
+	Vertex{glm::vec3(1.895f, 1.1f, -0.9f), glm::vec3(1.0f), glm::vec3(-1, 0, 0), glm::vec2(0.0f, 0.0f)}, // 0: sol alt arka
+	Vertex{glm::vec3(1.895f, 1.1f, -0.3f), glm::vec3(1.0f), glm::vec3(-1, 0, 0), glm::vec2(1.0f, 0.0f)}, // 1: sol alt ön
+	Vertex{glm::vec3(1.875f, 1.1f, -0.3f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(1.0f, 1.0f)},  // 2: sað alt ön
+	Vertex{glm::vec3(1.875f, 1.1f, -0.9f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(0.0f, 1.0f)},  // 3: sað alt arka
+
+	// Üst yüzey
+	Vertex{glm::vec3(1.895f, 1.5f, -0.9f), glm::vec3(1.0f), glm::vec3(-1, 0, 0), glm::vec2(0.0f, 0.0f)}, // 4: sol üst arka
+	Vertex{glm::vec3(1.895f, 1.5f, -0.3f), glm::vec3(1.0f), glm::vec3(-1, 0, 0), glm::vec2(1.0f, 0.0f)}, // 5: sol üst ön
+	Vertex{glm::vec3(1.875f, 1.5f, -0.3f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(1.0f, 1.0f)},  // 6: sað üst ön
+	Vertex{glm::vec3(1.875f, 1.5f, -0.9f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(0.0f, 1.0f)}   // 7: sað üst arka
+};
+
+Vertex frameImageVertices[] = {
+	Vertex{glm::vec3(1.874f, 1.13f, -0.87f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(0.0f, 0.0f)}, // sol alt
+	Vertex{glm::vec3(1.874f, 1.13f, -0.33f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(1.0f, 0.0f)}, // sað alt
+	Vertex{glm::vec3(1.874f, 1.47f, -0.33f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(1.0f, 1.0f)}, // sað üst
+	Vertex{glm::vec3(1.874f, 1.47f, -0.87f), glm::vec3(1.0f), glm::vec3(1, 0, 0), glm::vec2(0.0f, 1.0f)}  // sol üst
+};
+
 
 Vertex bedVertices[] = {
 	// Alt taban köþeleri (y = 0.0f)
@@ -288,11 +310,12 @@ Vertex mouseVertices[] = {
 };
 
 Vertex mouseImageVertices[] = {
-	Vertex{glm::vec3(-0.70f, 0.891f, -1.12f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(0,0)},
-	Vertex{glm::vec3(-0.70f, 0.891f, -1.0f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(1,0)},
-	Vertex{glm::vec3(-0.63f, 0.891f, -1.0f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(1,1)},
-	Vertex{glm::vec3(-0.63f, 0.891f, -1.12f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(0,1)}
+	Vertex{glm::vec3(-0.70f, 0.891f, -1.12f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(0.0f, 1.0f)}, // Sol arka (üst)
+	Vertex{glm::vec3(-0.63f, 0.891f, -1.12f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(1.0f, 1.0f)}, // Sað arka (üst)
+	Vertex{glm::vec3(-0.70f, 0.891f, -1.00f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(0.0f, 0.0f)}, // Sol ön (alt)
+	Vertex{glm::vec3(-0.63f, 0.891f, -1.00f), glm::vec3(0.15f), glm::vec3(0,1,0), glm::vec2(1.0f, 0.0f)}  // Sað ön (alt)
 };
+
 
 Vertex caseVertices[] = {
 	// Üst yüzey (y = 0.6f)
@@ -309,11 +332,25 @@ Vertex caseVertices[] = {
 };
 
 Vertex caseImageVertices[] = {
-	Vertex{glm::vec3(-0.48f, 0.6f, -0.95f), glm::vec3(0.2f), glm::vec3(0, 1, 0), glm::vec2(1.0f, 0.0f)}, // 0: sol ön üst
-	Vertex{glm::vec3(-0.25f, 0.6f, -0.95f), glm::vec3(0.2f), glm::vec3(0, 1, 0), glm::vec2(1.0f, 1.0f)}, // 1: sað ön üst
-	Vertex{glm::vec3(-0.48f, 0.15f, -0.95f), glm::vec3(0.2f), glm::vec3(0, -1, 0), glm::vec2(1.0f, 0.0f)}, // 2: sol ön alt
-	Vertex{glm::vec3(-0.25f, 0.15f, -0.95f), glm::vec3(0.2f), glm::vec3(0, -1, 0), glm::vec2(1.0f, 1.0f)}, // 3: sað ön alt
+	// pozisyon                                  // renk     // normal       // UV
+	Vertex{glm::vec3(-0.48f, 0.6f, -0.99f), glm::vec3(0.2f), glm::vec3(0, 0, 1), glm::vec2(0.0f, 1.0f)}, // 0: sol üst
+	Vertex{glm::vec3(-0.25f, 0.6f, -0.99f), glm::vec3(0.2f), glm::vec3(0, 0, 1), glm::vec2(1.0f, 1.0f)}, // 1: sað üst
+	Vertex{glm::vec3(-0.48f, 0.15f, -0.99f), glm::vec3(0.2f), glm::vec3(0, 0, 1), glm::vec2(0.0f, 0.0f)}, // 2: sol alt
+	Vertex{glm::vec3(-0.25f, 0.15f, -0.99f), glm::vec3(0.2f), glm::vec3(0, 0, 1), glm::vec2(1.0f, 0.0f)}  // 3: sað alt
 };
+
+Vertex pyramidVertices[] = {
+	// Taban köþeleri (y = 0.85f)
+	Vertex{glm::vec3(-0.7f, 0.85f, -1.9f), glm::vec3(1.0f), glm::vec3(0, -1, 0), glm::vec2(0.0f, 0.0f)}, // 0: sol arka
+	Vertex{glm::vec3(-0.3f, 0.85f, -1.9f), glm::vec3(1.0f), glm::vec3(0, -1, 0), glm::vec2(1.0f, 0.0f)}, // 1: sað arka
+	Vertex{glm::vec3(-0.3f, 0.85f, -1.5f), glm::vec3(1.0f), glm::vec3(0, -1, 0), glm::vec2(1.0f, 1.0f)}, // 2: sað ön
+	Vertex{glm::vec3(-0.7f, 0.85f, -1.5f), glm::vec3(1.0f), glm::vec3(0, -1, 0), glm::vec2(0.0f, 1.0f)}, // 3: sol ön
+
+	// Tepe noktasý (y = 0.95f)
+	Vertex{glm::vec3(-0.5f, 1.15f, -1.7f), glm::vec3(1.0f), glm::vec3(0, 1, 0), glm::vec2(0.5f, 0.5f)} // 4: tepe
+};
+
+
 
 
 
@@ -365,15 +402,13 @@ GLuint carpetIndices[] = {
    4,  6,  7,
 };
 
-GLuint backTextureWallIndices[] = {
+GLuint backWallIndices[] = {
 	// Ön yüz
 	0, 1, 2, 0, 2, 3,
 
 	// Arka yüz
 	4, 6, 5, 4, 7, 6,
-};
 
-GLuint backColorWallIndices[] = {
 	// Sol yüz
 	4, 0, 3, 4, 3, 7,
 
@@ -388,7 +423,7 @@ GLuint backColorWallIndices[] = {
 };
 
 
-GLuint leftTextureWallIndices[] = {
+GLuint leftWallIndices[] = {
 	// Sol yüz (0, 1, 5, 4)
 	0, 1, 5,
 	0, 5, 4,
@@ -396,9 +431,6 @@ GLuint leftTextureWallIndices[] = {
 	// Sað yüz (3, 2, 6, 7)
 	3, 2, 6,
 	3, 6, 7,
-};
-
-GLuint leftColorWallIndices[] = {
 	// Ön yüz (0, 3, 7, 4)
 	0, 3, 7,
 	0, 7, 4,
@@ -416,8 +448,7 @@ GLuint leftColorWallIndices[] = {
 	0, 3, 2
 };
 
-
-GLuint rightTextureWallIndices[] = {
+GLuint rightWallIndices[] = {
 	// Sol yüz (0, 1, 5, 4)
 	0, 1, 5,
 	0, 5, 4,
@@ -425,9 +456,7 @@ GLuint rightTextureWallIndices[] = {
 	// Sað yüz (3, 7, 6, 2)
 	3, 7, 6,
 	3, 6, 2,
-};
 
-GLuint rightColorWallIndices[] = {
 	// Ön yüz (1, 2, 6, 5)
 	1, 2, 6,
 	1, 6, 5,
@@ -444,6 +473,39 @@ GLuint rightColorWallIndices[] = {
 	0, 3, 2,
 	0, 2, 1
 };
+
+GLuint frameIndices[] = {
+	// Alt yüzey
+	0, 1, 2,
+	0, 2, 3,
+
+	// Üst yüzey
+	4, 5, 6,
+	4, 6, 7,
+
+	// Ön yüzey
+	1, 5, 6,
+	1, 6, 2,
+
+	// Arka yüzey
+	0, 4, 7,
+	0, 7, 3,
+
+	// Sol yüzey
+	0, 1, 5,
+	0, 5, 4,
+
+	// Sað yüzey
+	3, 2, 6,
+	3, 6, 7
+};
+
+GLuint frameImageIndices[] = {
+	0, 1, 2,
+	0, 2, 3
+};
+
+
 
 GLuint bedIndices[] = {
 	// Alt yüzey
@@ -555,6 +617,12 @@ GLuint upoftableIndices[] = {
 	0, 3, 7, 0, 7, 4  // sol yüzey
 };
 
+GLuint mouseImageIndices[] = {
+	0, 1, 2,  // 1. üçgen (sol arka, sað arka, sol ön)
+	1, 3, 2   // 2. üçgen (sað arka, sað ön, sol ön)
+};
+
+
 GLuint monitorScreenIndices[] = {
 	0, 1, 2,
 	2, 3, 0
@@ -592,9 +660,22 @@ GLuint caseIndices[] = {
 };
 
 GLuint caseImageIndices[] = {
-	0, 1, 2,
-	1, 2, 3,
+	0, 1, 2,  // Üst sol üçgen
+	2, 1, 3   // Alt sað üçgen
 };
+
+GLuint pyramidIndices[] = {
+	// Taban (iki üçgen)
+	0, 1, 2,
+	2, 3, 0,
+
+	// Yan yüzeyler (4 üçgen)
+	0, 1, 4, // arka yüz
+	1, 2, 4, // sað yüz
+	2, 3, 4, // ön yüz
+	3, 0, 4  // sol yüz
+};
+
 
 
 

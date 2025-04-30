@@ -6,61 +6,49 @@ namespace fs = std::filesystem;
 #include"model.h"
 #include"allVertex.h"
 
-#define GLM_ENABLE_EXPERIMENTAL
-#include <glm/gtx/transform.hpp>
-
-
-
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 1600;
+const unsigned int height = 1600;
 
 
 int main()
 {
-	// Initialize GLFW
 	glfwInit();
 
-	// Tell GLFW what version of OpenGL we are using 
-	// In this case we are using OpenGL 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	// Tell GLFW we are using the CORE profile
-	// So that means we only have the modern functions
+
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
-	// Error check if the window fails to create
+	GLFWwindow* window = glfwCreateWindow(width, height, "Computer Graphics OpenGL Project", NULL, NULL);
+
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
 		return -1;
 	}
-	// Introduce the window into the current context
 	glfwMakeContextCurrent(window);
 
-	// Load GLAD so it configures OpenGL
 	gladLoadGL();
-	// Specify the viewport of OpenGL in the Window
-	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
+
 	glViewport(0, 0, width, height);
 
 
-	// Texture data
-	Texture textures[]
-	{
-		Texture("images/floor.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true),
-		Texture("images/wall.jpg", "specular", 1, GL_RED, GL_UNSIGNED_BYTE, true)
-	};
+	// Texture datas
 
-	Texture carpetTexture("images/carpet2.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	Texture floorTexture("images/floor.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	std::vector<Texture> floorTextures = { floorTexture };
+
+	Texture carpetTexture("images/carpet.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> carpetTextures = { carpetTexture };
 
-	Texture wallTexture("images/wall2.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	Texture wallTexture("images/wall.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> wallTextures = { wallTexture };
 
-	Texture bedTexture("images/cars1.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	Texture frameTexture("images/carsFrame.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	std::vector<Texture> frameTextures = { frameTexture };
+
+	Texture bedTexture("images/cars.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> bedTextures = { bedTexture };
 
 	Texture bedHTexture("images/furniture.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
@@ -75,62 +63,49 @@ int main()
 	Texture screenTexture("images/xp.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> screenTextures = { screenTexture };
 
-	Texture keyboardTexture("images/keyboard2.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, false);
+	Texture keyboardTexture("images/keyboard.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, false);
 	std::vector<Texture> keyboardTextures = { keyboardTexture };
 
-	Texture mouseTexture("images/mouse.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	Texture mouseTexture("images/mouse1.png", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> mouseTextures = { mouseTexture };
 
-	Texture computerTexture("images/pc2.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	Texture computerTexture("images/kasa.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> computerTextures = { computerTexture };
 
+	Texture pyramidTexture("images/pyramid.jpg", "specular", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
+	std::vector<Texture> pyramidTextures = { pyramidTexture };
 
 
-
-	// Original code from the tutorial
-	/*Texture textures[]
-	{
-		Texture("planks.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture("planksSpec.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
-	};*/
-
-
-
-	// Generates Shader object using shaders default.vert and default.frag
-	Shader shaderProgram("default.vert", "default.frag");
-	// Store mesh data in vectors for the mesh
+	Shader shaderProgram("shaders/default.vert", "shaders/default.frag");
+	
+	// Floor Mesh'i
 	std::vector <Vertex> verts(vertices, vertices + sizeof(vertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(indices, indices + sizeof(indices) / sizeof(GLuint));
-	std::vector <Texture> tex(textures, textures + sizeof(textures) / sizeof(Texture));
-	// Create floor mesh
-	Mesh floor(verts, ind, tex,true);
+	Mesh floor(verts, ind, floorTextures,true);
 
 	// Arka duvar Mesh'i
 	std::vector<Vertex> backVerts(backWallVertices, backWallVertices + sizeof(backWallVertices)/ sizeof(Vertex));
-	std::vector<GLuint> backInd(backTextureWallIndices, backTextureWallIndices + sizeof(backTextureWallIndices) / sizeof(GLuint));
+	std::vector<GLuint> backInd(backWallIndices, backWallIndices + sizeof(backWallIndices) / sizeof(GLuint));
 	Mesh backWall(backVerts, backInd, wallTextures, true);
-
-	std::vector<Vertex> backcolorWallVerts(backWallVertices, backWallVertices + sizeof(backWallVertices) / sizeof(Vertex));
-	std::vector<GLuint> backcolorWallInd(backColorWallIndices, backColorWallIndices + sizeof(backColorWallIndices) / sizeof(GLuint));
-	Mesh backcolorWall(backcolorWallVerts, backcolorWallInd, wallTextures, true);
 
 	// Sol duvar
 	std::vector<Vertex> leftVerts(leftWallVertices, leftWallVertices + sizeof(leftWallVertices) / sizeof(Vertex));
-	std::vector<GLuint> leftInd(leftTextureWallIndices, leftTextureWallIndices + sizeof(leftTextureWallIndices) / sizeof(GLuint));
+	std::vector<GLuint> leftInd(leftWallIndices, leftWallIndices + sizeof(leftWallIndices) / sizeof(GLuint));
 	Mesh leftWall(leftVerts, leftInd, wallTextures, true);
-
-	std::vector<Vertex> leftcolorWallVerts(leftWallVertices, leftWallVertices + sizeof(leftWallVertices) / sizeof(Vertex));
-	std::vector<GLuint> leftcolorWallInd(leftColorWallIndices, leftColorWallIndices + sizeof(leftColorWallIndices) / sizeof(GLuint));
-	Mesh leftcolorWall(leftcolorWallVerts, leftcolorWallInd, wallTextures,false);
 
 	// Sağ duvar
 	std::vector<Vertex> rightVerts(rightWallVertices, rightWallVertices + sizeof(rightWallVertices) / sizeof(Vertex));
-	std::vector<GLuint> rightInd(rightTextureWallIndices, rightTextureWallIndices + sizeof(rightTextureWallIndices) / sizeof(GLuint));
+	std::vector<GLuint> rightInd(rightWallIndices, rightWallIndices + sizeof(rightWallIndices) / sizeof(GLuint));
 	Mesh rightWall(rightVerts, rightInd, wallTextures,true);
 
-	std::vector<Vertex> rightcolorWallVerts(rightWallVertices, rightWallVertices + sizeof(rightWallVertices) / sizeof(Vertex));
-	std::vector<GLuint> rightcolorWallInd(rightColorWallIndices, rightColorWallIndices + sizeof(rightColorWallIndices) / sizeof(GLuint));
-	Mesh rightcolorWall(rightcolorWallVerts, rightcolorWallInd, wallTextures, false);
+	// Tablo Mesh'i
+	std::vector<Vertex> frameVerts(frameVertices, frameVertices + sizeof(frameVertices) / sizeof(Vertex));
+	std::vector<GLuint> frameInd(frameIndices, frameIndices + sizeof(frameIndices) / sizeof(GLuint));
+	Mesh frame(frameVerts, frameInd, furnitureTextures, true);
+
+	std::vector<Vertex> frameImageVerts(frameImageVertices, frameImageVertices + sizeof(frameImageVertices) / sizeof(Vertex));
+	std::vector<GLuint> frameImageInd(frameImageIndices, frameImageIndices + sizeof(frameImageIndices) / sizeof(GLuint));
+	Mesh frameImage(frameImageVerts, frameImageInd, frameTextures, true);
 
 	// Yatak Mesh'i
 	std::vector<Vertex> bedVerts(bedVertices, bedVertices + sizeof(bedVertices) / sizeof(Vertex));
@@ -210,7 +185,7 @@ int main()
 	Mesh mouse(mouseVerts, mouseInd, techTextures, true);
 
 	std::vector<Vertex> mouseImageVerts(mouseImageVertices, mouseImageVertices + sizeof(mouseImageVertices) / sizeof(Vertex));
-	std::vector<GLuint> mouseImageInd(keyboardImageIndices, keyboardImageIndices + sizeof(keyboardImageIndices) / sizeof(GLuint));
+	std::vector<GLuint> mouseImageInd(mouseImageIndices, mouseImageIndices + sizeof(mouseImageIndices) / sizeof(GLuint));
 	Mesh mouseImage(mouseImageVerts, mouseImageInd, mouseTextures, true);
 
 	// Computer Mesh'i
@@ -222,14 +197,16 @@ int main()
 	std::vector<GLuint> computerImageInd(caseImageIndices, caseImageIndices + sizeof(caseImageIndices) / sizeof(GLuint));
 	Mesh computerImage(computerImageVerts, computerImageInd, computerTextures, true);
 
+	// Pyramid Mesh'i
+	std::vector<Vertex> triangleVerts(pyramidVertices, pyramidVertices + sizeof(pyramidVertices) / sizeof(Vertex));
+	std::vector<GLuint> triangleInd(pyramidIndices, pyramidIndices + sizeof(pyramidIndices) / sizeof(GLuint));
+	Mesh triangle(triangleVerts, triangleInd, pyramidTextures, true);
 
-	// Shader for light cube
-	Shader lightShader("light.vert", "light.frag");
-	// Store mesh data in vectors for the mesh
+
+	Shader lightShader("shaders/light.vert", "shaders/light.frag");
 	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
 	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
-	// Create light mesh
-	Mesh light(lightVerts, lightInd, tex,true);
+	Mesh light(lightVerts, lightInd, floorTextures,true);
 
 
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
@@ -241,11 +218,6 @@ int main()
 	glm::mat4 objectModel = glm::mat4(1.0f);
 	objectModel = glm::translate(objectModel, objectPos);
 
-	Shader shaderColorProgram("basic.vert", "basic.frag");
-
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-
 
 	lightShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
@@ -254,29 +226,18 @@ int main()
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(objectModel));
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
-	shaderColorProgram.Activate();
-	glUniformMatrix4fv(glGetUniformLocation(shaderColorProgram.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
-	glUniform4f(glGetUniformLocation(shaderColorProgram.ID, "objectColor"), 0.7f, 0.7f, 0.7f, 1.0f); // Kırmızı renk
 
-
-	// Enables the Depth Buffer
 	glEnable(GL_DEPTH_TEST);
 
-	// Creates camera object
 	Camera camera(width, height, glm::vec3(-1.0f, 1.0f, 2.0f));
 
-	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
-		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
-		// Clean the back buffer and depth buffer
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-		// Handles camera inputs
 		camera.Inputs(window);
-		// Updates and exports the camera matrix to the Vertex Shader
 		camera.updateMatrix(45.0f, 0.1f, 100.0f);
 		
 
@@ -285,11 +246,10 @@ int main()
 		carpet.Draw(shaderProgram, camera);
 		light.Draw(lightShader, camera);
 		backWall.Draw(shaderProgram, camera);
-		backcolorWall.Draw(shaderColorProgram, camera);
 		leftWall.Draw(shaderProgram, camera);
-		leftcolorWall.Draw(shaderColorProgram, camera);
 		rightWall.Draw(shaderProgram, camera);
-		rightcolorWall.Draw(shaderColorProgram, camera);
+		frame.Draw(shaderProgram, camera);
+		frameImage.Draw(shaderProgram, camera);
 		bed.Draw(shaderProgram, camera);
 		bedHeader.Draw(shaderProgram,camera);
 		bedPart.Draw(shaderProgram, camera);
@@ -310,22 +270,17 @@ int main()
 		mouseImage.Draw(shaderProgram, camera);
 		computer.Draw(shaderProgram, camera);
 		computerImage.Draw(shaderProgram, camera);
+		triangle.Draw(shaderProgram, camera);
 
 
-		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
-		// Take care of all GLFW events
 		glfwPollEvents();
 	}
 
 
-
-	// Delete all the objects we've created
 	shaderProgram.Delete();
 	lightShader.Delete();
-	// Delete window before ending the program
 	glfwDestroyWindow(window);
-	// Terminate GLFW before ending the program
 	glfwTerminate();
 	return 0;
 }
