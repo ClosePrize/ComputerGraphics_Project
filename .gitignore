@@ -10,3 +10,4 @@
 # Build and debug folders
 Computer.9a75d943/x64/Debug/
 x64
+*.vcxproj.user
