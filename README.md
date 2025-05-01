@@ -1,7 +1,6 @@
 # Bilgisayar Grafikleri Projesi
 
-Bu proje, Visual Studio kullanarak geliştirilen bir OpenGL uygulamasıdır. Proje, 3D grafikler ve sahne rendering işlemleri üzerine odaklanmaktadır. Kullanıcı, projeyi Visual Studio'da açıp doğrudan çalıştırabilir veya manuel olarak derleyebilir.
-Proje Videosu: https://youtu.be/Jppn0Wltxt8
+Bu proje, Visual Studio kullanarak geliştirilen bir OpenGL uygulamasıdır. Proje, 3D grafikler ve sahne rendering işlemleri üzerine odaklanmaktadır. Kullanıcı, projeyi Visual Studio'da açıp doğrudan çalıştırabilir veya manuel olarak derleyebilir. <br> **Proje Videosu:** https://youtu.be/Jppn0Wltxt8
 
 ## Özellikler
 - 3D sahnelerde temel nesnelerin görselleştirilmesi
