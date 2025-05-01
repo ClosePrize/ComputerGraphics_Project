@@ -15,9 +15,9 @@ Projeyi Visual Studio'ya yüklemek için aşağıdaki adımları izleyin:
 
 1. Bu depoyu bilgisayarınıza klonlayın.
 
-   '''bash
+   ```bash
    git clone https://github.com/ClosePrize/ComputerGraphics_Project.git
-   '''
+   ```
 
 2. `ComputerGraphics_Project.sln` dosyasını Visual Studio'da açın.
 
@@ -28,9 +28,9 @@ Eğer Visual Studio kullanmıyorsanız, proje aşağıdaki adımlar ile manuel o
 
 1. Projeyi bilgisayarınıza klonlayın.
    
-   '''bash
+   ```bash
    git clone https://github.com/ClosePrize/ComputerGraphics_Project.git
-   '''
+   ```
 
 2. Aşağıdaki komutları kullanarak projeyi derleyebilirsiniz:
 
