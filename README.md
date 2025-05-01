@@ -42,7 +42,7 @@ Eğer Visual Studio kullanmıyorsanız, proje aşağıdaki adımlar ile manuel o
 
 ## Teknik Ayrıntılar
 
-Daha fazla teknik bilgi ve proje hakkında detaylı rapor için [proje raporu dosyasına](./Proje Raporu.pdf) göz atabilirsiniz.
+Daha fazla teknik bilgi ve proje hakkında detaylı rapor için [proje raporu dosyasına](Proje Raporu.pdf) göz atabilirsiniz.
 
 ## Görseller
 
