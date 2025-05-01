@@ -1,7 +1,5 @@
 #include"Camera.h"
 
-
-
 Camera::Camera(int width, int height, glm::vec3 position)
 {
 	Camera::width = width;
@@ -70,7 +68,7 @@ void Camera::Inputs(GLFWwindow* window)
 	}
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 	{
-		speed = 0.02f; // Shift'e basýnca biraz daha hýzlý gitsin ama çok deðil
+		speed = 0.02f; 
 	}
 	else if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_RELEASE)
 	{

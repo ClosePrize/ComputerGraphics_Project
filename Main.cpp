@@ -1,9 +1,4 @@
-﻿//------- Ignore this ----------
-#include<filesystem>
-namespace fs = std::filesystem;
-//------------------------------
-
-#include"model.h"
+﻿#include"model.h"
 #include"allVertex.h"
 
 const unsigned int width = 1600;
@@ -35,7 +30,6 @@ int main()
 
 
 	// Texture datas
-
 	Texture floorTexture("images/floor.jpg", "diffuse", 0, GL_RGB, GL_UNSIGNED_BYTE, true);
 	std::vector<Texture> floorTextures = { floorTexture };
 
